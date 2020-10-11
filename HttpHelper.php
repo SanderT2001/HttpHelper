@@ -104,7 +104,7 @@ class HttpHelper
 
         $result = curl_exec($ch);
         $info = $this->getCurlInfo($ch);
-        $output = new stdClass();
+        $output = new \stdClass();
         $output->headers = $info;
         $output->body = $result;
         curl_close($ch);
@@ -116,7 +116,7 @@ class HttpHelper
         if (is_resource($ch) === false)
             throw new InvalidArgumentException('getCurlResult function expects first parameter to be a CURL resource, "' . gettype($ch) . '" given');
 
-        $output = new stdClass();
+        $output = new \stdClass();
         $info = curl_getinfo($ch);
         $allowed_keys = $this->getCurlInfoKeys();
         foreach ($info as $key => $val)
